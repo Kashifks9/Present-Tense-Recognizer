@@ -1,0 +1,64 @@
+import nltk
+from nltk.tokenize import word_tokenize, sent_tokenize
+
+## Table where logic is stored, you can add more sentence logics here in this table
+Table = [['PRPVBZDTNN', 'Present Simple'],
+         ['PRPVBZDTJJNN','Present Simple'],
+         ['PRPVBPNNS', 'Present Simple'],
+         ['PRPVBPJJNNS', 'Present Simple'],
+         ['NNPVBZDTNN', 'Present Simple'],
+         ['NNPVBZDTJJNN', 'Present Simple'],
+         ['NNPVBPNNS', 'Present Simple'],
+         ['NNPVBPJJNNS', 'Present Simple'],
+         ['PRPVBZVBGDTNN', 'Present Continous'],
+         ['PRPVBZVBGNN', 'Present Continous'],
+         ['PRPVBZVBGPRP$NN', 'Present Continous'],
+         ['NNSVBPVBGNN', 'Present Continous'],
+         ['NNPVBZVBGDTNN', 'Present Continous'],
+         ['NNPVBZVBGNN', 'Present Continous'],
+         ['NNPVBZVBGPRP$NN', 'Present Continous'],
+         ['PRPVBPVBGNN', 'Present Continous'],
+         ['NNPVBZVBGINPRP$NN','Present Continous'],
+         ['PRPVBPVBGINNNS','Present Continous'],
+         ['PRPVBPVBNPRP$NN','Present Perfect'],
+         ['PRPVBPVBNDTNN','Present Perfect'],
+         ['PRPVBPVBG','Present Continous'],
+         ['PRPVBPDTNN','Present Simple'],
+         ['PRPVBPVBGDTNN','Present Continous'],
+         ['PRPVBPVBGPRP$NN','Present Continous'],
+         ['NNSVBPVBGPRP$NN', 'Present Continous'],
+        ['NNPVBDDTJJNN','Present perfect'],
+        ['PRPVBPCDNN','Present perfect'],
+        ['PRPMDVBVBNVBGNNINNN','Future Perfect Continuous']]
+
+
+## User Input is here, you can ask user or give sentence here 
+Text = 'they will have been playing football in field'
+arrdup = ''
+
+#Taking input in a single array
+sentences = sent_tokenize(Text)
+#Breaking every word of sentence in different indexes of array
+words = word_tokenize(Text)
+#Tagging of POS of sentence
+print(words)
+pos = nltk.pos_tag(words)
+arrpos = [0 for i in range(len(words))]
+    
+
+    #Putting POS tagging in an array
+for i in range(len(words)):
+    arrpos[i] = pos[i][1]
+print(arrpos)
+
+    #Generating pattern of the given input
+for i in range(len(words)):
+    arrdup= arrdup+ arrpos[i]
+print(arrdup)
+    
+    
+for i in range(len(Table)):
+    if arrdup == Table[i][0]:
+        print(Table[i][1])
+        break
+   
